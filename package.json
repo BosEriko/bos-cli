@@ -30,6 +30,7 @@
   "dependencies": {
     "arg": "^4.1.1",
     "esm": "^3.2.25",
+    "executive": "^1.6.3",
     "inquirer": "^6.5.0"
   }
 }
