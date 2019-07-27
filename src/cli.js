@@ -1,5 +1,6 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
+import exec from 'executive';
 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
@@ -64,4 +65,5 @@ export async function cli(args) {
     let options = parseArgumentsIntoOptions(args);
     options = await promptForMissingOptions(options);
     console.log(options);
+    exec("figlet 'El Psy Congroo'");
 }
