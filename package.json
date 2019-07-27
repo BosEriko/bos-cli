@@ -1,11 +1,22 @@
 {
-  "name": "bos-cli",
+  "name": "@boseriko/bos",
   "version": "1.0.0",
-  "description": "This is a CLI for my everyday needs.",
-  "main": "index.js",
+  "description": "A CLI for my daily needs",
+  "main": "src/index.js",
+  "bin": {
+    "@boseriko/bos": "bin/bos",
+    "bos": "bin/bos"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BosEriko/bos-cli.git"
@@ -15,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/BosEriko/bos-cli/issues"
   },
-  "homepage": "https://github.com/BosEriko/bos-cli#readme"
+  "homepage": "https://github.com/BosEriko/bos-cli#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
 }
