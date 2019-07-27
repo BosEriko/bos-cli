@@ -2,6 +2,7 @@
 This is a CLI for my everyday needs.
 
 ## Steps to use
+    npm install
     npm link
 
 ## Reference
