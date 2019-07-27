@@ -1,0 +1,19 @@
+{
+  "name": "bos-cli",
+  "version": "1.0.0",
+  "description": "This is a CLI for my everyday needs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BosEriko/bos-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BosEriko/bos-cli/issues"
+  },
+  "homepage": "https://github.com/BosEriko/bos-cli#readme"
+}
