@@ -29,8 +29,10 @@
   "homepage": "https://github.com/BosEriko/bos-cli#readme",
   "dependencies": {
     "arg": "^4.1.1",
+    "chalk": "^2.4.2",
     "esm": "^3.2.25",
     "executive": "^1.6.3",
-    "inquirer": "^6.5.0"
+    "inquirer": "^6.5.0",
+    "ncp": "^2.0.0"
   }
 }
