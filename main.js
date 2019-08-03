@@ -3,12 +3,9 @@ import fs from 'fs';
 import ncp from 'ncp';
 import path from 'path';
 import { promisify } from 'util';
-// import exec from 'executive';
 
 const access = promisify(fs.access);
 const copy = promisify(ncp);
-
-// exec("figlet 'El Psy Congroo'");
 
 async function copyTemplateFiles(options) {
     return copy(options.templateDirectory, options.targetDirectory, {
