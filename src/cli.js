@@ -5,12 +5,9 @@ import exec from 'executive';
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
-            '--git': Boolean,
-            '--yes': Boolean,
-            '--install': Boolean,
-            '-g': '--git',
-            '-y': '--yes',
-            '-i': '--install',
+            '--git': Boolean, '-g': '--git',
+            '--yes': Boolean, '-y': '--yes',
+            '--install': Boolean, '-i': '--install',
         },
         {
             argv: rawArgs.slice(2),
