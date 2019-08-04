@@ -34,13 +34,13 @@ async function promptForMissingOptions(options) {
             default: 'Help',
         });
     } else {
-        if(options.assist) {
+        if (options.assist) {
             currentState = 'Assist'
-        } else if(options.directory) {
+        } else if (options.directory) {
             currentState = 'Directory'
-        } else if(options.fun) {
+        } else if (options.fun) {
             currentState = 'Fun'
-        } else if(options.help) {
+        } else if (options.help) {
             currentState = 'Help'
         }
     }
