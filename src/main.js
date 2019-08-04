@@ -1,13 +1,13 @@
-import execa from 'execa';
+import exec from 'executive'
 
 export async function bosOptions(options) {
     if (options.state === 'Assist') {
-        console.log(1);
+        exec(`figlet '${options.state}'`)
     } else if (options.state === 'Directory') {
-        console.log(2);
+        exec(`figlet '${options.state}'`)
     } else if (options.state === 'Fun') {
-        console.log(3);
+        exec(`figlet '${options.state}'`)
     } else if (options.state === 'Help') {
-        console.log(4);
+        exec(`figlet '${options.state}'`)
     }
 }
