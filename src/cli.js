@@ -30,8 +30,8 @@ async function promptForMissingOptions(options) {
             type: 'list',
             name: 'state',
             message: 'What do you need',
-            choices: ['Help', 'Assist', 'Directory', 'Fun'],
-            default: 'Help',
+            choices: ['Assist', 'Directory', 'Fun', 'Help'],
+            default: 'Assist',
         });
     } else {
         if (options.assist) {
