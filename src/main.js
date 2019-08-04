@@ -6,7 +6,14 @@ export async function bosOptions(options) {
     } else if (options.state === 'Directory') {
         exec(`figlet '${options.state}'`)
     } else if (options.state === 'Fun') {
-        exec(`figlet '${options.state}'`)
+        switch (options.choice) {
+            case 'Parrot Say':
+                exec(`figlet 'Parrot Say'`)
+                break;
+            case 'Party Parrot':
+                exec(`figlet 'Party Parrot'`)
+                break;
+        }
     } else if (options.state === 'Help') {
         exec(`figlet '${options.state}'`)
     }

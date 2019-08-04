@@ -48,7 +48,7 @@ async function promptForMissingOptions(options) {
     const state = currentState || stateAnswer.state;
 
     questions = [];
-    switch(state) {
+    switch (state) {
         case 'Assist':
             questions.push({
                 type: 'list',
