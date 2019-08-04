@@ -23,61 +23,94 @@ function parseArgumentsIntoOptions(rawArgs) {
 }
 
 async function promptForMissingOptions(options) {
-    const defaultTemplate = 'Help';
-    // if (options.skipPrompts) {
-    //     return {
-    //         ...options,
-    //         template: options.template || defaultTemplate,
-    //     };
-    // }
-
-    const questions = [];
-    // if (!options.template) {
-    //     questions.push({
-    //         type: 'list',
-    //         name: 'template',
-    //         message: 'Please choose which project template to use',
-    //         choices: ['JavaScript', 'TypeScript'],
-    //         default: defaultTemplate,
-    //     });
-    // }
-
-    // if (!options.git) {
-    //     questions.push({
-    //         type: 'confirm',
-    //         name: 'git',
-    //         message: 'Initialize a git repository?',
-    //         default: false,
-    //     });
-    // }
-
-    let state = false;
+    let questions = [];
+    let currentState = false;
     if (!(options.assist || options.directory || options.fun || options.help)) {
         questions.push({
             type: 'list',
             name: 'state',
             message: 'What do you need',
-            choices: ['Assist', 'Directory', 'Fun', 'Help'],
-            default: defaultTemplate,
+            choices: ['Help', 'Assist', 'Directory', 'Fun'],
+            default: 'Help',
         });
     } else {
         if(options.assist) {
-            state = 'Assist'
+            currentState = 'Assist'
         } else if(options.directory) {
-            state = 'Directory'
+            currentState = 'Directory'
         } else if(options.fun) {
-            state = 'Fun'
+            currentState = 'Fun'
         } else if(options.help) {
-            state = 'Help'
+            currentState = 'Help'
         }
     }
+    const stateAnswer = await inquirer.prompt(questions);
+    const state = currentState || stateAnswer.state;
 
-    const answers = await inquirer.prompt(questions);
+    questions = [];
+    switch(state) {
+        case 'Assist':
+            questions.push({
+                type: 'list',
+                name: 'choice',
+                message: 'Where do you need assistance',
+                choices: [
+                    'Browser',
+                    'Clear Bin',
+                    'CPU Temperature',
+                    'CPU Usage',
+                    'External IP',
+                    'Localhost Live',
+                    'Localhost',
+                    'Markdown',
+                    'Ngrok',
+                    'NPM List',
+                    'NPM Outdated',
+                    'NPM Update',
+                    'Qutebrowser',
+                    'Restart ZSH',
+                    'Restart',
+                    'Shut Down',
+                    'SSH Key',
+                    'Visual Studio Extension Backup',
+                    'Visual Studio Extension Install',
+                ],
+                default: 'Browser',
+            });
+            break;
+        case 'Directory':
+            questions.push({
+                type: 'list',
+                name: 'choice',
+                message: 'In which directory do you want to go',
+                choices: [
+                    'CLI',
+                    'Dotfiles',
+                    'Personal',
+                    'Work',
+                ],
+                default: 'CLI',
+            });
+            break;
+        case 'Fun':
+            questions.push({
+                type: 'list',
+                name: 'choice',
+                message: 'Which do you want to play',
+                choices: [
+                    'Parrot Say',
+                    'Party Parrot',
+                ],
+                default: 'Parrot Say',
+            });
+            break;
+    }
+    const choiceAnswer = await inquirer.prompt(questions);
+    const choice = state === 'Help' ? state : choiceAnswer.choice;
+
     return {
-        state: state || answers.state,
-        choice: 'Default',
-        // template: options.template || answers.template,
-        // git: options.git || answers.git,
+        state: state,
+        choice: choice,
     };
 }
 
