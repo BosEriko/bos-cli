@@ -6,7 +6,6 @@ function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
             '--assist': Boolean,        '-a': '--assist',
-            '--directory': Boolean,     '-d': '--directory',
             '--fun': Boolean,           '-f': '--fun',
             '--help': Boolean,          '-h': '--help',
         },
@@ -16,7 +15,6 @@ function parseArgumentsIntoOptions(rawArgs) {
     );
     return {
         assist: args['--assist']        || false,
-        directory: args['--directory']  || false,
         fun: args['--fun']              || false,
         help: args['--help']            || false,
     };
@@ -25,19 +23,17 @@ function parseArgumentsIntoOptions(rawArgs) {
 async function promptForMissingOptions(options) {
     let questions = [];
     let currentState = false;
-    if (!(options.assist || options.directory || options.fun || options.help)) {
+    if (!(options.assist || options.fun || options.help)) {
         questions.push({
             type: 'list',
             name: 'state',
             message: 'What do you need',
-            choices: ['Assist', 'Directory', 'Fun', 'Help'],
+            choices: ['Assist', 'Fun', 'Help'],
             default: 'Assist',
         });
     } else {
         if (options.assist) {
             currentState = 'Assist'
-        } else if (options.directory) {
-            currentState = 'Directory'
         } else if (options.fun) {
             currentState = 'Fun'
         } else if (options.help) {
@@ -76,20 +72,6 @@ async function promptForMissingOptions(options) {
                     'Visual Studio Extension Install',
                 ],
                 default: 'Browser',
-            });
-            break;
-        case 'Directory':
-            questions.push({
-                type: 'list',
-                name: 'choice',
-                message: 'In which directory do you want to go',
-                choices: [
-                    'CLI',
-                    'Dotfiles',
-                    'Personal',
-                    'Work',
-                ],
-                default: 'CLI',
             });
             break;
         case 'Fun':
