@@ -6,3 +6,6 @@ To run the program do:
 ```
 cargo run
 ```
+
+# References
+- https://mattgathu.github.io/writing-cli-app-rust/
